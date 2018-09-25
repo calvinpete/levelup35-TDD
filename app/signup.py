@@ -1,3 +1,5 @@
+import re
+
 class Signup:
     """
     This class registers to user
@@ -20,3 +22,12 @@ class Signup:
         :return:
         """
         return "{} {}".format(self.first_name, self.last_name)
+
+    def validate_password(self):
+        pwd = re.compile("(^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{4,}$)")
+        matcher1 = pwd.match(self.password)
+        if matcher1:
+            print("{}".format(self.password))
+        else:
+            raise ValueError("The password should not be less than 4 characters and should "
+                             "contain A capital letter, a small letter, a digit and a special character. ")
