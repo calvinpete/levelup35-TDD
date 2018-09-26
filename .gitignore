@@ -103,6 +103,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+app.py
 
 .idea/levelup35-TDD.iml
 .idea/misc.xml
