@@ -66,8 +66,15 @@ class Signup:
         else:
             raise ValueError("The email should follow the format of valid emails (johndoe@mail.com)")
 
+    def validate_age(self):
+        """
+        This checks if the age provided is valid
+        :return:
+        """
+        if not self.age.isdigit():
+            raise ValueError("The age should not be a character nor should it be less than 0")
+        if int(self.age) <= -1:
+            raise ValueError("The age should not be a character nor should it be less than 0")
+        else:
+            return self.age
 
-# if __name__ == "__main__":
-#     calvin = Signup("Calvin", "Peter", "Calvin", "tinka-_calvin@gmail.co.org",
-#                     0-773-548-160, "<#HOLY!spirit@17>", 26, "P.O Box 3080", "male")
-#     calvin.validate_email_address()
