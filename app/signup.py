@@ -27,7 +27,27 @@ class Signup:
         pwd = re.compile("(^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{4,}$)")
         matcher1 = pwd.match(self.password)
         if matcher1:
-            print("{}".format(self.password))
+            return self.password
         else:
             raise ValueError("The password should not be less than 4 characters and should "
                              "contain A capital letter, a small letter, a digit and a special character. ")
+
+    def validate_username(self):
+        usr_name = re.compile("(^\S{4,}$)")
+        matcher2 = usr_name.match(self.username)
+        if not matcher2:
+            raise ValueError("The username should not be less than 4 characters and have no whitespaces")
+        if self.username == self.first_name:
+            raise ValueError("The username should not be your first name")
+        if self.username == self.last_name:
+            raise ValueError("The username should not be your last name")
+        if self.username == self.full_name():
+            raise ValueError("The username should not be your full name")
+        else:
+            return self.username
+
+
+# if __name__ == "__main__":
+#     calvin = Signup("Calvin", "Peter", "Calvin", "tinkacalvin@gmail.com",
+#                     0-773-548-160, "<#HOLY!spirit@17>", 26, "P.O Box 3080", "male")
+#     calvin.validate_username()
