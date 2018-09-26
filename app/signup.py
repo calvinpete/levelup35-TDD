@@ -3,7 +3,7 @@ import re
 
 class Signup(object):
     """
-    This class registers a user
+    This class holds the validations of user details
     """
     def __init__(self, first_name, last_name, username, email_address, password, age, gender, active=False):
         self.first_name = first_name
