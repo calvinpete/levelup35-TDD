@@ -1,20 +1,19 @@
 import re
 
-class Signup:
+
+class Signup(object):
     """
-    This class registers to user
+    This class registers a user
     """
-    def __init__(self, first_name, last_name, username, email_address,
-                 phone_number, password, age, postal_address, gender):
+    def __init__(self, first_name, last_name, username, email_address, password, age, gender, active=False):
         self.first_name = first_name
         self.last_name = last_name
         self.username = username
         self.email_address = email_address
-        self.phone_number = phone_number
         self.password = password
         self.age = age
-        self.postal_address = postal_address
         self.gender = gender
+        self.active = active
 
     def full_name(self):
         """
@@ -31,7 +30,7 @@ class Signup:
         pwd = re.compile("(^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{4,}$)")
         matcher1 = pwd.match(self.password)
         if matcher1:
-            return self.password
+            return True
         else:
             raise ValueError("The password should not be less than 4 characters and should "
                              "contain A capital letter, a small letter, a digit and a special character. ")
@@ -52,7 +51,7 @@ class Signup:
         if self.username == self.full_name():
             raise ValueError("The username should not be your full name")
         else:
-            return self.username
+            return True
 
     def validate_email_address(self):
         """
@@ -62,7 +61,7 @@ class Signup:
         email = re.compile("(^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
         matcher3 = email.match(self.email_address)
         if matcher3:
-            print("{}".format(self.email_address))
+            return True
         else:
             raise ValueError("The email should follow the format of valid emails (johndoe@mail.com)")
 
@@ -76,5 +75,4 @@ class Signup:
         if int(self.age) <= -1:
             raise ValueError("The age should not be a character nor should it be less than 0")
         else:
-            return self.age
-
+            return True
