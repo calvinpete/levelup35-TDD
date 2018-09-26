@@ -24,6 +24,10 @@ class Signup:
         return "{} {}".format(self.first_name, self.last_name)
 
     def validate_password(self):
+        """
+        This checks if the password matches the preferred pattern
+        :return self.password:
+        """
         pwd = re.compile("(^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{4,}$)")
         matcher1 = pwd.match(self.password)
         if matcher1:
@@ -33,6 +37,10 @@ class Signup:
                              "contain A capital letter, a small letter, a digit and a special character. ")
 
     def validate_username(self):
+        """
+        This checks if the username is not less than 4 characters and has no whitespace
+        :return self.username:
+        """
         usr_name = re.compile("(^\S{4,}$)")
         matcher2 = usr_name.match(self.username)
         if not matcher2:
@@ -46,8 +54,20 @@ class Signup:
         else:
             return self.username
 
+    def validate_email_address(self):
+        """
+        This checks if the email address matches the preferred pattern
+        :return self.email_address:
+        """
+        email = re.compile("(^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
+        matcher3 = email.match(self.email_address)
+        if matcher3:
+            print("{}".format(self.email_address))
+        else:
+            raise ValueError("The email should follow the format of valid emails (johndoe@mail.com)")
+
 
 # if __name__ == "__main__":
-#     calvin = Signup("Calvin", "Peter", "Calvin", "tinkacalvin@gmail.com",
+#     calvin = Signup("Calvin", "Peter", "Calvin", "tinka-_calvin@gmail.co.org",
 #                     0-773-548-160, "<#HOLY!spirit@17>", 26, "P.O Box 3080", "male")
-#     calvin.validate_username()
+#     calvin.validate_email_address()
