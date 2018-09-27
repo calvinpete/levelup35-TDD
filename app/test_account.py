@@ -13,8 +13,11 @@ class TestUser(unittest.TestCase):
         This method runs before each test by creating object sample data
         :return:
         """
-        self.user_signup = Signup("Calvin", "Peter", "calvinpete", "tinkacalvin@gmail.com", "<!Mario8Funke/>", 26,
+        self.user_signup = Signup("Calvin", "Peter", "calvinpete", "tinkacalvin@gmail.com", "<!Mario8Funke/>", "26",
                                   "male")
+        self.user1_signup = Signup("Mark", "Ronald", "Mark", "markronald.com", "marky", "-6", "male")
+        self.user2_signup = Signup("Lonah", "Jemah", "Jemah", "Jemah8lo@hotmail.com", "j9W>olgm", "hjh", "male")
+        self.user2_signup = Signup("King", "David", "King David", "davidking@gmail.com", "psaLms198?", "124", "male")
         self.user_account = Account()
         # user_account.register(user_signup)
         # user_account.login("calvinpete", "<!Mario8Funke/>")
@@ -34,3 +37,13 @@ class TestUser(unittest.TestCase):
         :return:
         """
         self.assertEqual(self.user_signup.full_name(), "Calvin Peter")
+
+    def test_validate_password(self):
+        """
+        This tests the password validation method
+        :return:
+        """
+        self.assertEqual(self.user_signup.validate_password(), True)
+        with self.assertRaises(ValueError):
+            self.user1_signup.validate_password()
+
