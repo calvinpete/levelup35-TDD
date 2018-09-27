@@ -17,7 +17,8 @@ class TestUser(unittest.TestCase):
                                   "male")
         self.user1_signup = Signup("Mark", "Ronald", "Mark", "markronald.com", "marky", "-6", "male")
         self.user2_signup = Signup("Lonah", "Jemah", "Jemah", "Jemah8lo@hotmail.com", "j9W>olgm", "hjh", "male")
-        self.user2_signup = Signup("King", "David", "King David", "davidking@gmail.com", "psaLms198?", "124", "male")
+        self.user3_signup = Signup("King", "David", "King David", "davidking@gmail.com", "psaLms198?", "124", "male")
+        self.user4_signup = Signup("Harvey", "Moses", "M H", "MH@gmail.com", "suQ3?kdright", "34", "male")
         self.user_account = Account()
         # user_account.register(user_signup)
         # user_account.login("calvinpete", "<!Mario8Funke/>")
@@ -46,4 +47,20 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.user_signup.validate_password(), True)
         with self.assertRaises(ValueError):
             self.user1_signup.validate_password()
+
+    def test_validate_username(self):
+        """
+        This tests the username validation method
+        :return:
+        """
+        self.assertEqual(self.user_signup.validate_username(), True)
+        with self.assertRaises(ValueError):
+            self.user4_signup.validate_username()
+        with self.assertRaises(ValueError):
+            self.user3_signup.validate_username()
+        with self.assertRaises(ValueError):
+            self.user2_signup.validate_username()
+        with self.assertRaises(ValueError):
+            self.user1_signup.validate_username()
+
 
