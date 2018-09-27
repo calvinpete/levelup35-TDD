@@ -36,4 +36,14 @@ class TestAccount(unittest.TestCase):
         """
         self.assertEqual(self.user_account.register(self.user_signup), "You've been successfully registered")
 
+    def test_login(self):
+        """
+        This tests the login method of the Account class
+        :return:
+        """
+        self.user_account.register(self.user_signup)
+        self.assertEqual(self.user_account.login("calvinpete", "<!Mario8Funke/>"), True)
+        self.assertEqual(self.user_account.login("AnointedKing", "psaLms><198?"), False)
+        self.assertEqual(self.user_account.login("calvinpete", "psaLms><198?"), False)
+
 
