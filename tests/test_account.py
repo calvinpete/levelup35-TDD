@@ -1,29 +1,11 @@
 import unittest
-from account import Account
-from signup import Signup
+from tests.basetest import BaseTestCase
 
 
-class TestAccount(unittest.TestCase):
+class TestAccount(BaseTestCase):
     """
     This class holds a setup method that creates the demo data to be used to test the program
     """
-
-    def setUp(self):
-        """
-        This method runs before each test by creating object sample data
-        :return:
-        """
-        self.user_signup = Signup("Calvin", "Peter", "calvinpete", "tinkacalvin@gmail.com", "<!Mario8Funke/>", "26",
-                                  "male")
-        self.user1_signup = Signup("Calvin", "Peter", "YossiFunke", "tinkacalvin@gmail.com", "Rejo78!ce", "26", "male")
-        self.user_account = Account()
-
-    def test_creation(self):
-        """
-        This tests for an instance of the Account class
-        :return:
-        """
-        self.assertIsInstance(self.user_account, Account)
 
     def test_register(self):
         """
@@ -60,7 +42,7 @@ class TestAccount(unittest.TestCase):
         self.user_account.register(self.user_signup)
         self.assertDictEqual(
             self.user_account.edit_user_details("YossiFunke", "Rejo78!ce", "calvinpete", "<!Mario8Funke/>"),
-            self.user1_signup.__dict__
+            self.user5_signup.__dict__
         )
 
 
