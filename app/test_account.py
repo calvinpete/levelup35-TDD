@@ -46,4 +46,13 @@ class TestAccount(unittest.TestCase):
         self.assertEqual(self.user_account.login("AnointedKing", "psaLms><198?"), False)
         self.assertEqual(self.user_account.login("calvinpete", "psaLms><198?"), False)
 
+    def test_user_profile(self):
+        """
+        This tests the user_profile method
+        :return:
+        """
+        self.user_account.register(self.user_signup)
+        self.assertDictEqual(self.user_account.user_profile("calvinpete", "<!Mario8Funke/>"),
+                             self.user_signup.__dict__)
+
 
