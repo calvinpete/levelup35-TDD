@@ -72,4 +72,14 @@ class TestUser(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.user1_signup.validate_email_address()
 
+    def test_validate_age(self):
+        """
+        This tests the age validation method
+        :return:
+        """
+        self.assertEqual(self.user_signup.validate_age(), True)
+        with self.assertRaises(ValueError):
+            self.user1_signup.validate_age()
+        with self.assertRaises(ValueError):
+            self.user2_signup.validate_age()
 
