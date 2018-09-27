@@ -22,15 +22,17 @@ class Account:
         :return:
         """
         for i in self.accounts:
-            if i.__getattribute__("username") != username:
+            # checks if the username entered is registered
+            if username != i.__getattribute__("username"):
                 print("Please input the right username")
                 return False
 
-            if i.__getattribute__("password") != password:
+            # checks if the user has entered his/her password
+            if password != i.__getattribute__("password"):
                 print("Please enter the correct password")
                 return False
             else:
-                i.__dict__["active"] = True
+                i.__dict__["active"] = True  # shows that the user is currently logged into his/her account
                 return True
 
     def user_profile(self, username, password):

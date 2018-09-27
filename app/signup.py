@@ -5,14 +5,14 @@ class Signup(object):
     """
     This class holds the validations of user details
     """
-    def __init__(self, first_name, last_name, username, email_address, password, age, gender, active=False):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.username = username
-        self.email_address = email_address
-        self.password = password
-        self.age = age
-        self.gender = gender
+    def __init__(self, *args, active=False):
+        self.first_name = args[0]
+        self.last_name = args[1]
+        self.username = args[2]
+        self.email_address = args[3]
+        self.password = args[4]
+        self.age = args[5]
+        self.gender = args[6]
         self.active = active
 
     def full_name(self):
@@ -24,7 +24,7 @@ class Signup(object):
 
     def validate_password(self):
         """
-        This checks if the password matches the preferred pattern
+        This method checks if the password matches the preferred pattern
         :return self.password:
         """
         pwd = re.compile("(^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{4,}$)")
@@ -55,15 +55,15 @@ class Signup(object):
 
     def validate_email_address(self):
         """
-        This checks if the email address matches the preferred pattern
+        This checks for the validity of the email address
         :return self.email_address:
         """
         email = re.compile("(^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)")
-        matcher3 = email.match(self.email_address)
-        if matcher3:
-            return True
-        else:
+        email_matcher = email.match(self.email_address)
+        if not email_matcher:
             raise ValueError("The email should follow the format of valid emails (johndoe@mail.com)")
+        else:
+            return True
 
     def validate_age(self):
         """
