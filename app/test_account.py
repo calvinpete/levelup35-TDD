@@ -15,12 +15,8 @@ class TestAccount(unittest.TestCase):
         """
         self.user_signup = Signup("Calvin", "Peter", "calvinpete", "tinkacalvin@gmail.com", "<!Mario8Funke/>", "26",
                                   "male")
-        self.user1_signup = Signup("King", "David", "AnointedKing", "davidking@gmail.com", "psaLms><198?", "124",
-                                   "male")
+        self.user1_signup = Signup("Calvin", "Peter", "YossiFunke", "tinkacalvin@gmail.com", "Rejo78!ce", "26", "male")
         self.user_account = Account()
-        # self.user_account.login("calvinpete", "<!Mario8Funke/>")
-        # self.user_account.user_profile("calvinpete", "<!Mario8Funke/>")
-        # self.user_account.edit_user_details("YossiFunke", "Rejo78!ce", "calvinpete", "<!Mario8Funke/>")
 
     def test_creation(self):
         """
@@ -53,6 +49,20 @@ class TestAccount(unittest.TestCase):
         """
         self.user_account.register(self.user_signup)
         self.assertDictEqual(self.user_account.user_profile("calvinpete", "<!Mario8Funke/>"),
-                             self.user_signup.__dict__)
+                             self.user_signup.__dict__
+                             )
+
+    def test_edit_user_profile(self):
+        """
+        This tests the edit_user_profile method
+        :return:
+        """
+        self.user_account.register(self.user_signup)
+        self.assertDictEqual(
+            self.user_account.edit_user_details("YossiFunke", "Rejo78!ce", "calvinpete", "<!Mario8Funke/>"),
+            self.user1_signup.__dict__
+        )
 
 
+if __name__ == "__main__":
+    unittest.main()
