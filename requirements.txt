@@ -10,6 +10,7 @@ audioread==2.1.5
 Babel==2.6.0
 backports.functools-lru-cache==1.4
 blinker==1.4
+codeclimate-test-reporter==0.2.3
 certifi==2018.4.16
 cffi==1.11.5
 chardet==3.0.4
