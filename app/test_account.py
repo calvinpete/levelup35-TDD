@@ -15,9 +15,9 @@ class TestAccount(unittest.TestCase):
         """
         self.user_signup = Signup("Calvin", "Peter", "calvinpete", "tinkacalvin@gmail.com", "<!Mario8Funke/>", "26",
                                   "male")
-        self.user1_signup = Signup("King", "David", "AnointedKing", "davidking@gmail.com", "psaLms><198?", "124", "male")
+        self.user1_signup = Signup("King", "David", "AnointedKing", "davidking@gmail.com", "psaLms><198?", "124",
+                                   "male")
         self.user_account = Account()
-        # self.user_account.register(self.user_signup)
         # self.user_account.login("calvinpete", "<!Mario8Funke/>")
         # self.user_account.user_profile("calvinpete", "<!Mario8Funke/>")
         # self.user_account.edit_user_details("YossiFunke", "Rejo78!ce", "calvinpete", "<!Mario8Funke/>")
@@ -28,5 +28,12 @@ class TestAccount(unittest.TestCase):
         :return:
         """
         self.assertIsInstance(self.user_account, Account)
+
+    def test_register(self):
+        """
+        This tests the register method of the Account class
+        :return:
+        """
+        self.assertEqual(self.user_account.register(self.user_signup), "You've been successfully registered")
 
 
