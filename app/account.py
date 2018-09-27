@@ -12,7 +12,7 @@ class Account:
         :return:
         """
         self.accounts.append(user)
-        print("You've been successfully registered")
+        return "You've been successfully registered"
 
     def login(self, username, password):
         """
@@ -42,7 +42,7 @@ class Account:
         """
         for i in self.accounts:
             if i.__getattribute__("username") == username and i.__getattribute__("password") == password:
-                print(i.__dict__)
+                return i.__dict__
 
     def edit_user_details(self, new_username, new_password, username, password):
         """
@@ -57,4 +57,4 @@ class Account:
             if i.__getattribute__("username") == username and i.__getattribute__("password") == password:
                 i.__dict__["username"] = new_username
                 i.__dict__["password"] = new_password
-                print(i.__dict__)
+                return i.__dict__
