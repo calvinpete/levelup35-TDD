@@ -1,6 +1,6 @@
 import unittest
-from signup import Signup
 from account import Account
+from signup import Signup
 
 
 class TestUser(unittest.TestCase):
@@ -27,3 +27,10 @@ class TestUser(unittest.TestCase):
         :return:
         """
         self.assertIsInstance(self.user_signup, Signup)
+
+    def test_full_name(self):
+        """
+        This tests if a full name is created
+        :return:
+        """
+        self.assertEqual(self.user_signup.full_name(), "Calvin Peter")
