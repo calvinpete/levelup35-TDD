@@ -63,4 +63,13 @@ class TestUser(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.user1_signup.validate_username()
 
+    def test_validate_email_address(self):
+        """
+        This tests the email address validation method
+        :return:
+        """
+        self.assertEqual(self.user_signup.validate_email_address(), True)
+        with self.assertRaises(ValueError):
+            self.user1_signup.validate_email_address()
+
 
